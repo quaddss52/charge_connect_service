@@ -1,0 +1,26 @@
+{
+  "name": "user-roles-api",
+  "version": "1.0.0",
+  "description": "Simple REST API for user roles management",
+  "main": "server.js",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest-api",
+    "user-roles",
+    "json"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "type": "commonjs"
+}
