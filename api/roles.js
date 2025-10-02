@@ -13,6 +13,7 @@ module.exports = (req, res) => {
   try {
     const filePath = path.join(__dirname, "../data", "roles.json");
     const data = fs.readFileSync(filePath, "utf8");
+
     const roles = JSON.parse(data);
 
     res.status(200).json({
