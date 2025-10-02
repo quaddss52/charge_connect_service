@@ -1,10 +1,10 @@
 // Plain Vercel Serverless Function (CommonJS). Lives at /api/initialize-payment.js
 
 const AMOUNT_BY_DURATION = {
-  "15 min": 300,
-  "30 min": 300,
-  "45 min": 300,
-  "1 hr": 300,
+  "15 min": 1000,
+  "30 min": 2000,
+  "45 min": 3000,
+  "1 hr": 4000,
 };
 
 module.exports = async (req, res) => {
@@ -69,12 +69,10 @@ module.exports = async (req, res) => {
 
     if (!psRes.ok || !json?.status) {
       console.error("Paystack init failed:", psRes.status, json);
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: json?.message || "Payment initialization failed",
-        });
+      return res.status(400).json({
+        success: false,
+        message: json?.message || "Payment initialization failed",
+      });
     }
 
     const { access_code, reference } = json.data || {};
