@@ -36,6 +36,7 @@ module.exports = async (req, res) => {
     const vRes = await fetch(
       `https://api.paystack.co/transaction/verify/${reference}`,
       {
+        method: "POST",
         headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}` },
       }
     );
@@ -50,13 +51,11 @@ module.exports = async (req, res) => {
 
     if (!vRes.ok || !json?.status) {
       console.error("Paystack verify failed:", vRes.status, json);
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: json?.message || "Verification failed",
-          data: json?.data,
-        });
+      return res.status(400).json({
+        success: false,
+        message: json?.message || "Verification failed",
+        data: json?.data,
+      });
     }
 
     const ok = json.data?.status === "success";
